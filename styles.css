@@ -1,0 +1,687 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Tahoma', 'Arial', 'Noto Sans Arabic', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    direction: rtl;
+    text-align: right;
+}
+
+/* Arabic Font Support */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Styles */
+.header {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-brand h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-right: 10px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Button Styles */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+.btn-secondary {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #7f8c8d;
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+}
+
+/* Main Content */
+.main {
+    margin-top: 80px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23333" width="1200" height="600"/><circle fill="%23e74c3c" cx="300" cy="300" r="100"/><circle fill="%23c0392b" cx="900" cy="300" r="80"/></svg>');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+/* Customer Turn Status Section */
+.customer-turn-status {
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.turn-status-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.turn-status-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    color: #2c3e50;
+}
+
+.turn-number-display {
+    margin-bottom: 2rem;
+}
+
+.turn-number-label {
+    display: block;
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-bottom: 0.5rem;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.turn-number {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #e74c3c;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.turn-details {
+    margin-bottom: 2rem;
+    text-align: right;
+}
+
+.turn-details h3 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.turn-details p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    color: #34495e;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.turn-details strong {
+    color: #2c3e50;
+}
+
+.turn-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.turn-actions .btn {
+    min-width: 150px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+}
+
+.admin-content {
+    max-width: 800px;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close {
+    color: #aaa;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+}
+
+.close:hover {
+    color: #000;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    font-family: 'Noto Sans Arabic', sans-serif;
+    text-align: right;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+/* Admin Dashboard Styles */
+.admin-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e1e8ed;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #7f8c8d;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.tab-btn.active {
+    color: #e74c3c;
+    border-bottom-color: #e74c3c;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Turns List */
+.turns-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.turn-item {
+    background: #f8f9fa;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.turn-info h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.turn-info p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin: 0.2rem 0;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.turn-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* How It Works Section */
+.how-it-works {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+}
+
+.how-it-works h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.step-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+}
+
+.step-card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.step-card p {
+    color: #7f8c8d;
+    line-height: 1.6;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+/* Services Section */
+.services {
+    padding: 4rem 2rem;
+    background: white;
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.service-card i {
+    font-size: 3rem;
+    color: #e74c3c;
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.service-card p {
+    color: #7f8c8d;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+/* About Section */
+.about {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.about p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+/* Footer */
+.footer {
+    background: #2c3e50;
+    color: white;
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    margin-bottom: 1rem;
+    color: #e74c3c;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.footer-section p {
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #34495e;
+    opacity: 0.7;
+}
+
+/* Status Indicators */
+.status-confirmed {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.status-completed {
+    color: #3498db;
+    font-weight: 600;
+}
+
+.status-cancelled {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.status-waiting {
+    color: #f39c12;
+    font-weight: 600;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #27ae60;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 3000;
+    animation: slideInLeft 0.3s ease;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.toast-error {
+    background: #e74c3c;
+}
+
+.toast-success {
+    background: #27ae60;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav {
+        padding: 0 1rem;
+    }
+    
+    .nav-brand h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+        padding: 1.5rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-tabs {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        text-align: right;
+    }
+    
+    .turn-status-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .turn-number {
+        font-size: 3rem;
+    }
+    
+    .turn-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .turn-actions .btn {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .services {
+        padding: 2rem 1rem;
+    }
+    
+    .about {
+        padding: 2rem 1rem;
+    }
+    
+    .customer-turn-status {
+        padding: 2rem 1rem;
+    }
+    
+    .turn-status-card {
+        padding: 1.5rem 1rem;
+    }
+}

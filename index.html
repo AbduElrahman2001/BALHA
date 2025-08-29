@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BALHA - نظام الدور في صالون الحلاقة</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>BALHA</h1>
+                <span class="subtitle">صالون الحلاقة</span>
+            </div>
+            <div class="nav-menu">
+                <button id="loginBtn" class="btn btn-primary">تسجيل دخول المدير</button>
+                <button id="logoutBtn" class="btn btn-secondary" style="display: none;">تسجيل خروج</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>مرحباً بكم في BALHA</h2>
+                <p>خدمات حلاقة احترافية مع نظام دور بسيط</p>
+                <button id="bookNowBtn" class="btn btn-primary btn-large">خذ دورك</button>
+            </div>
+        </section>
+
+        <!-- Customer Turn Status Section -->
+        <section id="customerTurnStatus" class="customer-turn-status" style="display: none;">
+            <div class="turn-status-container">
+                <div class="turn-status-card">
+                    <div class="turn-number-display">
+                        <span class="turn-number-label">رقم دورك</span>
+                        <span id="customerTurnNumber" class="turn-number">#0</span>
+                    </div>
+                    <div class="turn-details">
+                        <h3 id="customerNameDisplay">اسم العميل</h3>
+                        <p><strong>الخدمة:</strong> <span id="customerServiceDisplay">-</span></p>
+                        <p><strong>الحالة:</strong> <span id="customerStatusDisplay" class="status-waiting">في الانتظار</span></p>
+                        <p><strong>وقت التسجيل:</strong> <span id="customerTimeDisplay">-</span></p>
+                    </div>
+                    <div class="turn-actions">
+                        <button id="checkTurnStatusBtn" class="btn btn-primary">
+                            <i class="fas fa-sync-alt"></i> تحديث الحالة
+                        </button>
+                        <button id="cancelTurnBtn" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> إلغاء الدور
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Modal (Admin Only) -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>تسجيل دخول المدير</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">اسم المستخدم:</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">كلمة المرور:</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">تسجيل دخول</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Turn Booking Modal -->
+        <div id="bookingModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>خذ دورك</h2>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="customerName">الاسم الكامل:</label>
+                        <input type="text" id="customerName" required placeholder="أدخل اسمك الكامل">
+                    </div>
+                    <div class="form-group">
+                        <label for="mobileNumber">رقم الجوال:</label>
+                        <input type="tel" id="mobileNumber" required placeholder="أدخل رقم جوالك">
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceType">نوع الخدمة:</label>
+                        <select id="serviceType" required>
+                            <option value="">اختر الخدمة</option>
+                            <option value="haircut">قص شعر</option>
+                            <option value="beard-trim">قص لحية</option>
+                            <option value="haircut-beard">قص شعر + لحية</option>
+                            <option value="shampoo">غسيل شعر</option>
+                            <option value="styling">تسريحة</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">خذ دورك</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard Modal -->
+        <div id="adminModal" class="modal">
+            <div class="modal-content admin-content">
+                <span class="close">&times;</span>
+                <h2>لوحة تحكم المدير</h2>
+                <div class="admin-tabs">
+                    <button class="tab-btn active" data-tab="turns">الأدوار الحالية</button>
+                    <button class="tab-btn" data-tab="notifications">إرسال رسالة نصية</button>
+                </div>
+                
+                <!-- Turns Tab -->
+                <div id="turnsTab" class="tab-content active">
+                    <h3>قائمة الأدوار الحالية</h3>
+                    <div class="turns-list" id="turnsList">
+                        <!-- Turns will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- SMS Notifications Tab -->
+                <div id="notificationsTab" class="tab-content">
+                    <h3>إرسال رسالة نصية</h3>
+                    <form id="notificationForm">
+                        <div class="form-group">
+                            <label for="notificationCustomer">العميل:</label>
+                            <select id="notificationCustomer" required>
+                                <option value="">اختر العميل</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminPhone">رقم جوال المدير:</label>
+                            <input type="tel" id="adminPhone" required placeholder="أدخل رقم جوال المدير">
+                        </div>
+                        <div class="form-group">
+                            <label for="notificationMessage">رسالة نصية:</label>
+                            <textarea id="notificationMessage" rows="4" required placeholder="دورك، احضر خلال 15 دقيقة">دورك، احضر خلال 15 دقيقة</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">إرسال رسالة نصية</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <section class="services">
+            <h2>خدماتنا</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-cut"></i>
+                    <h3>قص شعر</h3>
+                    <p>قص شعر احترافي مع تسريحة</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>قص لحية</h3>
+                    <p>قص لحية دقيق وتشكيل</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-magic"></i>
+                    <h3>تسريحة</h3>
+                    <p>تسريحة شعر إبداعية</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-spa"></i>
+                    <h3>غسيل شعر</h3>
+                    <p>غسيل شعر مريح ومعالجة</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <h2>كيف يعمل النظام</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>خذ دورك</h3>
+                    <p>أدخل اسمك ورقم جوالك للانضمام للطابور</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>انتظر الرسالة</h3>
+                    <p>ستستلم رسالة نصية عندما يحين دورك</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>احضر خلال 15 دقيقة</h3>
+                    <p>تعال إلى الصالون خلال 15 دقيقة من استلام الرسالة</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <h2>عن BALHA</h2>
+            <p>نقدم خدمات حلاقة عالية الجودة مع نظام دور بسيط. لا حاجة للحجوزات - فقط خذ دورك وانتظر إشعارنا النصي!</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>BALHA</h3>
+                <p>خدمات حلاقة احترافية</p>
+            </div>
+            <div class="footer-section">
+                <h4>اتصل بنا</h4>
+                <p>الهاتف: +966-50-123-4567</p>
+                <p>البريد الإلكتروني: info@balha.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>ساعات العمل</h4>
+                <p>الأحد-الخميس: 9:00 ص - 6:00 م</p>
+                <p>الجمعة: مغلق</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 BALHA. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Notification Toast -->
+    <div id="notificationToast" class="toast">
+        <span id="toastMessage"></span>
+        <button class="toast-close">&times;</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
